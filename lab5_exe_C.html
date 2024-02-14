@@ -85,7 +85,7 @@ Description : DOM Elements.
 	</head>
 	<body>
 		<header>
-			<h1>Welcome to <span class="Rajvir's and Paulo's">&nbsp;</span> Website</h1>
+			<h1>Welcome to <span class="companyName">&nbsp;</span> Website</h1>
 		</header>
 		<nav>
 			<ul>
@@ -105,11 +105,11 @@ Description : DOM Elements.
 			<section>
 				<h2>About Us</h2>
 				<p>This is a paragraph about our company.</p>
-				<img src="./images/logo.svg" alt="Company logo" width="100px" />
-                
+				
+                <img src="/logo.svg" alt="Company logo" width="100px" />
 				<h3>Our Journey</h3>
 				<p>
-					Welcome to our <span class="Rajvir's and Paulo's">&nbsp;</span>, a place where
+					Welcome to our <span class="companyName">&nbsp;</span>, a place where
 					innovation meets excellence. Our story began in the year 2010, in the
 					heart of Calgary, with a small team of passionate individuals
 					dedicated to making a difference in the software. Over the years,
@@ -118,7 +118,7 @@ Description : DOM Elements.
 				</p>
 				<h3>Our Mission</h3>
 				<p>
-					At our <span class="Rajvir's and Paulo's">&nbsp;</span>, our mission is to
+					At our <span class="companyName">&nbsp;</span>, our mission is to
 					empower businesses and individuals through cutting-edge technology and
 					bespoke services. We believe in pushing boundaries, challenging the
 					status quo, and constantly innovating to stay ahead of the curve. Our
@@ -206,33 +206,91 @@ Description : DOM Elements.
 		<script>
 			document.addEventListener('DOMContentLoaded', function afterRender() {
 				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
+				// document.getElementsByClassName('companyName');
+				// for (let i = 0; i < elements.length; i++) {
+				// 	elements[i].textContent = 'Full Stack';
+				// 	elements[i].style.border = 'none';
+				// }
 				
+
+				var companyName =  document.getElementsByClassName("companyName");
+				for (let i = 0;i < companyName.length; i++){
+					companyName[i].textContent = "Rajvir's and Paulo's";
+					companyName[i].style.border = "none";
+				}
+
 
 				// Task 2: Change the background color of the navigation bar
-				
+				var navbar = document.getElementsByTagName("nav");
+				navbar[0].style.backgroundColor = "pink";
 
 				// Task 3: Hide the section titled 'What is full-stack?'
+				var fullStack = document.getElementsByTagName("article");
+				fullStack[0].style.display = "none";
 
 
 				// Task 4: Create a new <p> element and append it to the 'About Us' section
+				var text = document.getElementsByTagName("section");
+				var newtext = text[0];
+				var aboutus = document.getElementsByTagName("p")
+				
+				var newP = document.createElement("p");
+				newP.className = "newP";
+				newP.textContent = "We are very interesting people";
+				
+				aboutus[0].appendChild(newP);
 
 
 				// Task 5: Add placeholders to input elements based on their corresponding label IDs
+				var name = document.getElementById("name");
+				name.placeholder = "Enter your name";
+
+				var email = document.getElementById("email");
+				email.placeholder = "Enter your email";
+
+				var message = document.getElementById("message");
+				message.placeholder = "Enter your message";
+
+
 
 
 				// Task 6: Set the src attribute of the image
+				var images = document.getElementsByTagName("img");
+				images[0].src = "i.jpg";
+				
 
 
 				// Task 7: Add a new item in the navigation menu
+				var newLi = document.createElement("li");
+				var newA = document.createElement("a");
+				newA.href = "#";
+				newA.textContent = "New Link";
+				newLi.appendChild(newA);
+				var nav = document.getElementsByTagName("nav");
+				nav[0].getElementsByTagName("ul")[0].appendChild(newLi);
+
 
 
 				// Task 8: Change the submit button text upon clicking and make it disabled
-
+				
+				var submit = document.getElementsByTagName("input");
+				var submit2 = submit[2];
+				submit2.addEventListener("click", function(){
+					submit2.value = "Submitted";
+					submit2.disabled = true;
+				});
 
 				// Task 9: Change the text color of each item in the 'Related Links' to green
-
+				var relatedLinks = document.getElementsByTagName("aside");
+				var links = relatedLinks[0].getElementsByTagName("a");
+				for (let i = 0; i < links.length; i++){
+					links[i].style.color = "green";
+				}
 
 				// Task 10: Add a red solid border to the footer
+				var footer = document.getElementsByTagName("footer");
+				footer[0].style.border = "2px solid red";
+				
 			});
 		</script>
 	</body>
