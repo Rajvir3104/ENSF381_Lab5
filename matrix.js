@@ -66,8 +66,11 @@ const showResult2D = (title, containerId, dataArray) => {
         let tr = document.createElement('tr');
         for(let j = 0; j < ncols; j++){
             let td = document.createElement('td');
-            td.textContent = dataArray[i][j];
-            tr.appendChild(td);           
+            let input = document.createElement('input');
+            input.type = 'number';
+            input.value = dataArray[i][j]; // Random value between 0 and 99
+            td.appendChild(input);
+            tr.appendChild(td);      
         }
         table.appendChild(tr);
     }
