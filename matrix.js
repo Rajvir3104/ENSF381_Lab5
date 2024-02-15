@@ -51,9 +51,30 @@ const showResult = (title, containerId, rows, cols, dataArray) => {
 };
 
 const showResult2D = (title, containerId, dataArray) => {
-	
     // dataArray is a 2D array
 	// complete this function based on the showResult function
+	let container = document.getElementById(containerId);
+    container.innerHTML = '';
+    let table = document.createElement('table');
+    nrows = dataArray.length;
+    ncols = dataArray[0].length;
+
+    console.log(nrows);
+    console.log(ncols);
+
+    for(let i = 0; i < nrows; i++){
+        let tr = document.createElement('tr');
+        for(let j = 0; j < ncols; j++){
+            let td = document.createElement('td');
+            td.textContent = dataArray[i][j];
+            tr.appendChild(td);           
+        }
+        table.appendChild(tr);
+    }
+
+    let caption = table.createCaption();
+    caption.textContent = title;
+    container.appendChild(table);
 }
 
 function performOperation(operation) {
@@ -80,6 +101,7 @@ function performOperation(operation) {
     // For example: if (operation === 'add') { addMatrices(matrix1, matrix2); }
 	// prints suitable messages for impossible situation
     showResult('The Result', 'matrix3', 2, 4, result); // use suitable function for printing results
+    showResult2D('The Result', 'matrix3', result);
 }
 
 const getMatrixData1D = function (matrixId) {
